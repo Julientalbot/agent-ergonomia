@@ -18,7 +18,7 @@ function Reveal({
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      transition={{ duration: 0.5, delay, ease: [0.25, 1, 0.5, 1] }}
       className={className}
     >
       {children}
@@ -33,21 +33,28 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
     <div className="border-b border-border-strong">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex justify-between items-center py-5 text-left cursor-pointer"
+        className="w-full flex justify-between items-center py-5 text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
         <span className="text-lg font-serif font-medium pr-4">{question}</span>
-        <span className="text-muted-light text-2xl leading-none shrink-0">
-          {open ? "\u2212" : "+"}
-        </span>
+        <motion.span
+          animate={{ rotate: open ? 45 : 0 }}
+          transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
+          className="text-muted-light text-2xl leading-none shrink-0"
+        >
+          +
+        </motion.span>
       </button>
-      <motion.div
-        initial={false}
-        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="overflow-hidden"
+      <div
+        className="grid transition-[grid-template-rows] duration-300"
+        style={{
+          gridTemplateRows: open ? "1fr" : "0fr",
+          transitionTimingFunction: "cubic-bezier(0.25, 1, 0.5, 1)",
+        }}
       >
-        <p className="pb-5 text-muted leading-relaxed">{answer}</p>
-      </motion.div>
+        <div className="overflow-hidden">
+          <p className="pb-5 text-muted leading-relaxed">{answer}</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -60,7 +67,7 @@ export default function Home() {
       <section className="min-h-[85vh] flex items-center">
         <div className="max-w-3xl mx-auto px-6 py-24 md:py-32">
           <Reveal>
-            <h1 className="text-3xl md:text-5xl leading-[1.10] tracking-tight">
+            <h1 className="leading-[1.10] tracking-tight" style={{ fontSize: "clamp(1.875rem, 1rem + 3vw, 3rem)" }}>
               Votre agent IA dort dans un coin. Normal&nbsp;&mdash; personne
               n&rsquo;a compris votre travail avant de le configurer.
             </h1>
@@ -75,8 +82,8 @@ export default function Home() {
           <Reveal delay={0.3}>
             <a
               href="#booking"
-              className="inline-block mt-10 px-8 py-4 bg-accent text-card font-medium rounded-lg hover:bg-accent-hover transition-colors"
-              style={{ boxShadow: "#c96442 0px 0px 0px 0px, #c96442 0px 0px 0px 1px" }}
+              className="inline-block mt-10 px-8 py-4 bg-accent text-card font-medium rounded-lg hover:bg-accent-hover transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+              style={{ boxShadow: "oklch(55% 0.14 35) 0px 0px 0px 0px, oklch(55% 0.14 35) 0px 0px 0px 1px" }}
             >
               Réserver un appel découverte
             </a>
@@ -88,29 +95,32 @@ export default function Home() {
       <section className="py-24 md:py-32 bg-card">
         <div className="max-w-5xl mx-auto px-6">
           <Reveal>
-            <h2 className="text-2xl md:text-4xl leading-[1.20] tracking-tight">
+            <h2 className="leading-[1.20] tracking-tight" style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.25rem)" }}>
               Pourquoi 40% des projets IA échouent
             </h2>
           </Reveal>
           <div className="mt-16 grid md:grid-cols-3 gap-8">
             {[
               {
+                num: "01",
                 title: "La page blanche",
                 text: "Vous avez installé un outil IA. Mais vous ne savez pas quoi lui demander. Il prend la poussière.",
               },
               {
+                num: "02",
                 title: "Le parachutage",
                 text: "Un agent déposé dans votre quotidien sans comprendre votre métier. Il ne correspond à rien.",
               },
               {
+                num: "03",
                 title: "Le prototype éternel",
                 text: "Ça a marché une fois pour une démo. Puis plus rien. Personne n\u2019ajuste, personne ne suit.",
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div className="p-8 bg-background border border-border rounded-lg ring-warm h-full">
-                  <div className="w-10 h-1 bg-accent-light mb-6 rounded-full" />
-                  <h3 className="text-xl mb-3">{item.title}</h3>
+                  <span className="font-serif text-accent text-sm font-medium">{item.num}</span>
+                  <h3 className="text-xl mt-3 mb-3">{item.title}</h3>
                   <p className="text-muted leading-relaxed">{item.text}</p>
                 </div>
               </Reveal>
@@ -123,7 +133,7 @@ export default function Home() {
       <section className="py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-6">
           <Reveal>
-            <h2 className="text-2xl md:text-4xl leading-[1.20] tracking-tight">
+            <h2 className="leading-[1.20] tracking-tight" style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.25rem)" }}>
               Un ergonome configure votre agent
             </h2>
           </Reveal>
@@ -170,7 +180,7 @@ export default function Home() {
       <section className="py-24 md:py-32 bg-card">
         <div className="max-w-3xl mx-auto px-6">
           <Reveal>
-            <h2 className="text-2xl md:text-4xl leading-[1.20] tracking-tight">
+            <h2 className="leading-[1.20] tracking-tight" style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.25rem)" }}>
               Tarifs
             </h2>
           </Reveal>
@@ -211,10 +221,10 @@ export default function Home() {
 
               <a
                 href="#booking"
-                className="inline-block px-8 py-4 bg-accent text-card font-medium rounded-lg hover:bg-accent-hover transition-colors"
-                style={{ boxShadow: "#c96442 0px 0px 0px 0px, #c96442 0px 0px 0px 1px" }}
+                className="inline-block px-8 py-4 bg-accent text-card font-medium rounded-lg hover:bg-accent-hover transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+                style={{ boxShadow: "oklch(55% 0.14 35) 0px 0px 0px 0px, oklch(55% 0.14 35) 0px 0px 0px 1px" }}
               >
-                Réserver un appel découverte
+                Prendre ma place
               </a>
             </div>
           </Reveal>
@@ -238,7 +248,7 @@ export default function Home() {
       <section className="py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-6">
           <Reveal>
-            <h2 className="text-2xl md:text-4xl leading-[1.20] tracking-tight mb-12">
+            <h2 className="leading-[1.20] tracking-tight mb-12" style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.25rem)" }}>
               Questions fréquentes
             </h2>
           </Reveal>
@@ -273,7 +283,7 @@ export default function Home() {
       <section id="booking" className="py-24 md:py-32 bg-card">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <Reveal>
-            <h2 className="text-2xl md:text-4xl leading-[1.20] tracking-tight">
+            <h2 className="leading-[1.20] tracking-tight" style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.25rem)" }}>
               Parlons de votre quotidien
             </h2>
           </Reveal>
@@ -289,10 +299,10 @@ export default function Home() {
                 href="https://cal.com/ergonomia/decouverte"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-10 py-5 bg-accent text-card text-lg font-medium rounded-lg hover:bg-accent-hover transition-colors"
-                style={{ boxShadow: "#c96442 0px 0px 0px 0px, #c96442 0px 0px 0px 1px" }}
+                className="inline-block px-10 py-5 bg-accent text-card text-lg font-medium rounded-lg hover:bg-accent-hover transition-colors focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+                style={{ boxShadow: "oklch(55% 0.14 35) 0px 0px 0px 0px, oklch(55% 0.14 35) 0px 0px 0px 1px" }}
               >
-                Réserver un appel découverte
+                Parlez-moi de votre quotidien
               </a>
               <p className="mt-4 text-sm text-muted-light">
                 30 min &middot; Gratuit &middot; Sans engagement

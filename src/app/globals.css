@@ -1,32 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  /* === DESIGN SYSTEM: Anthropic/Claude warm editorial === */
+  /* === DESIGN SYSTEM: Anthropic/Claude warm editorial (OKLCH) === */
   /* Surfaces */
-  --background: #f5f4ed;
-  --foreground: #141413;
-  --card: #faf9f5;
-  --card-alt: #e8e6dc;
+  --background: oklch(96% 0.01 85);
+  --foreground: oklch(14% 0.005 85);
+  --card: oklch(98% 0.008 85);
+  --card-alt: oklch(92% 0.012 85);
 
-  /* Brand */
-  --accent: #c96442;
-  --accent-light: #d97757;
-  --accent-hover: #b5573a;
-  --blue: #6a9bcc;
-  --green: #788c5d;
+  /* Brand — terracotta */
+  --accent: oklch(55% 0.14 35);
+  --accent-light: oklch(60% 0.13 35);
+  --accent-hover: oklch(48% 0.13 35);
+  --blue: oklch(65% 0.08 240);
+  --green: oklch(60% 0.08 130);
 
   /* Text */
-  --muted: #5e5d59;
-  --muted-light: #87867f;
-  --muted-lighter: #b0aea5;
+  --muted: oklch(45% 0.008 85);
+  --muted-light: oklch(60% 0.008 85);
+  --muted-lighter: oklch(73% 0.008 85);
 
   /* Borders */
-  --border: #f0eee6;
-  --border-strong: #e8e6dc;
-  --border-dark: #30302e;
+  --border: oklch(94% 0.01 85);
+  --border-strong: oklch(92% 0.012 85);
+  --border-dark: oklch(24% 0.005 85);
 
   /* Dark surfaces */
-  --dark-surface: #30302e;
+  --dark-surface: oklch(24% 0.005 85);
 }
 
 @theme inline {
