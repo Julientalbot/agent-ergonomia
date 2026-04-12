@@ -1,32 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  /* === DESIGN SYSTEM: Anthropic/Claude warm editorial (OKLCH) === */
+  /* === DESIGN SYSTEM: Warm editorial (Ergonomia) === */
   /* Surfaces */
-  --background: oklch(96% 0.01 85);
-  --foreground: oklch(14% 0.005 85);
-  --card: oklch(98% 0.008 85);
-  --card-alt: oklch(92% 0.012 85);
+  --background: oklch(96% 0.008 85);       /* warm parchment */
+  --foreground: oklch(15% 0.01 70);         /* deep olive */
+  --card: oklch(98% 0.006 85);              /* ivory */
+  --card-alt: oklch(93% 0.01 85);           /* linen */
 
   /* Brand — terracotta */
-  --accent: oklch(55% 0.14 35);
-  --accent-light: oklch(60% 0.13 35);
-  --accent-hover: oklch(48% 0.13 35);
-  --blue: oklch(65% 0.08 240);
-  --green: oklch(60% 0.08 130);
+  --accent: oklch(52% 0.15 30);
+  --accent-light: oklch(62% 0.12 35);
+  --accent-hover: oklch(45% 0.15 28);
+  --accent-subtle: oklch(95% 0.03 35);      /* terracotta whisper */
 
-  /* Text */
-  --muted: oklch(45% 0.008 85);
-  --muted-light: oklch(60% 0.008 85);
-  --muted-lighter: oklch(73% 0.008 85);
+  /* Text hierarchy */
+  --muted: oklch(42% 0.01 70);
+  --muted-light: oklch(58% 0.01 70);
+  --muted-lighter: oklch(72% 0.008 80);
 
   /* Borders */
-  --border: oklch(94% 0.01 85);
-  --border-strong: oklch(92% 0.012 85);
-  --border-dark: oklch(24% 0.005 85);
+  --border: oklch(92% 0.008 85);
+  --border-strong: oklch(88% 0.012 85);
 
-  /* Dark surfaces */
-  --dark-surface: oklch(24% 0.005 85);
+  /* Dark section */
+  --dark: oklch(15% 0.01 70);
+  --dark-muted: oklch(60% 0.01 80);
+  --dark-border: oklch(25% 0.01 70);
 }
 
 @theme inline {
@@ -37,14 +37,15 @@
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
   --color-accent-hover: var(--accent-hover);
-  --color-blue: var(--blue);
-  --color-green: var(--green);
+  --color-accent-subtle: var(--accent-subtle);
   --color-muted: var(--muted);
   --color-muted-light: var(--muted-light);
   --color-muted-lighter: var(--muted-lighter);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
-  --color-dark-surface: var(--dark-surface);
+  --color-dark: var(--dark);
+  --color-dark-muted: var(--dark-muted);
+  --color-dark-border: var(--dark-border);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-lora);
 }
@@ -53,25 +54,41 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
-  line-height: 1.60;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-/* Serif headings */
+/* Serif headings with character */
 h1, h2, h3, h4 {
   font-family: var(--font-lora), Georgia, serif;
   font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-/* Ring shadow utility */
-.ring-warm {
-  box-shadow: 0px 0px 0px 1px var(--border-strong);
+/* Horizontal rule — terracotta accent */
+hr.accent {
+  border: none;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.3;
 }
 
-/* Whisper shadow */
-.shadow-whisper {
-  box-shadow: rgba(0,0,0,0.05) 0px 4px 24px;
+/* Prose-style text blocks */
+.prose-custom p {
+  max-width: 65ch;
+}
+
+/* FAQ accordion transition */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.faq-answer.open {
+  grid-template-rows: 1fr;
+}
+.faq-answer > div {
+  overflow: hidden;
 }
