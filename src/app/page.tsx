@@ -348,7 +348,7 @@ export default function Home() {
           <Reveal delay={0.2}>
             <div className="mt-12">
               <a
-                href="https://cal.com/ergonomia/decouverte"
+                href=\"https://cal.com/julien-talbot-ergonome/decouverte\"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-8 py-4 bg-accent text-card font-medium rounded-md hover:bg-accent-hover transition-colors text-lg"
