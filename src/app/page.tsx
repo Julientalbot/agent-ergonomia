@@ -378,7 +378,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row md:justify-between md:items-center gap-3 text-sm text-dark-muted">
           <p>&copy; {new Date().getFullYear()} Ergonomia</p>
           <a
-            href="https://www.linkedin.com/in/julientalbot"
+            href="https://www.linkedin.com/in/julien-talbot-ergonome/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent-light hover:text-accent transition-colors"
