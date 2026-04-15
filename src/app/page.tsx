@@ -63,12 +63,130 @@ function Step({ n }: { n: string }) {
   );
 }
 
+/* ─── JSON-LD Structured Data ─── */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://agent.ergonomia.re/#business",
+      name: "Ergonomia",
+      alternateName: "Agent IA sur-mesure — Ergonomia",
+      description:
+        "Agent IA sur-mesure configuré par un ergonome. Comprend votre travail, agit dessus, et vous aide sans que vous ayez à demander.",
+      url: "https://agent.ergonomia.re",
+      telephone: "+33692070740",
+      image: "https://agent.ergonomia.re/opengraph-image",
+      priceRange: "97€–197€/mois",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Saint-Denis",
+        addressLocality: "Saint-Denis",
+        addressRegion: "La Réunion",
+        postalCode: "97400",
+        addressCountry: "FR",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: -20.8823,
+        longitude: 55.4504,
+      },
+      areaServed: {
+        "@type": "Place",
+        name: "La Réunion (974)",
+      },
+      sameAs: ["https://www.linkedin.com/in/julien-talbot-ergonome/"],
+      founder: {
+        "@type": "Person",
+        "@id": "https://agent.ergonomia.re/#person",
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://agent.ergonomia.re/#person",
+      name: "Julien Talbot",
+      jobTitle: "Ergonome",
+      knowsAbout: [
+        "Intelligence artificielle",
+        "Ergonomie",
+        "Conditions de travail",
+        "Agents IA",
+        "Automatisation",
+      ],
+      sameAs: ["https://www.linkedin.com/in/julien-talbot-ergonome/"],
+    },
+    {
+      "@type": "Service",
+      "@id": "https://agent.ergonomia.re/#service",
+      name: "Configuration d'agent IA sur-mesure",
+      description:
+        "Un ergonome analyse votre travail réel, configure un agent IA personnalisé et proactif, et assure un ajustement continu mensuel.",
+      provider: { "@id": "https://agent.ergonomia.re/#business" },
+      areaServed: {
+        "@type": "Place",
+        name: "La Réunion (974)",
+      },
+      serviceType: "Agent IA sur-mesure",
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Early Adopter",
+          description:
+            "10 premières places : installation gratuite, puis 97€/mois",
+          price: "97",
+          priceCurrency: "EUR",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: 97,
+            priceCurrency: "EUR",
+            billingDuration: {
+              "@type": "QuantitativeValue",
+              value: 1,
+              unitCode: "MON",
+            },
+          },
+          availability: "https://schema.org/LimitedAvailability",
+          offerCount: 10,
+        },
+        {
+          "@type": "Offer",
+          name: "Tarif normal",
+          description: "497€ installation + 197€/mois",
+          priceSpecification: [
+            {
+              "@type": "UnitPriceSpecification",
+              price: 497,
+              priceCurrency: "EUR",
+              billingIncrement: 1,
+            },
+            {
+              "@type": "UnitPriceSpecification",
+              price: 197,
+              priceCurrency: "EUR",
+              billingDuration: {
+                "@type": "QuantitativeValue",
+                value: 1,
+                unitCode: "MON",
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
 /* ═══════════════════════════════════════════
    PAGE
    ═══════════════════════════════════════════ */
 export default function Home() {
   return (
-    <main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main>
       {/* ─── HERO ─── */}
       <section className="pt-20 pb-24 md:pt-32 md:pb-40">
         <div className="max-w-2xl mx-auto px-6">
@@ -388,5 +506,6 @@ export default function Home() {
         </div>
       </footer>
     </main>
+    </>
   );
 }
