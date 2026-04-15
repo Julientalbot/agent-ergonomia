@@ -14,6 +14,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://agent.ergonomia.re"),
   title: "Agent IA sur-mesure — Ergonomia | Julien Talbot",
   description:
     "Un ergonome configure votre agent IA. Il comprend votre travail, agit dessus, et vous aide sans que vous ayez à demander.",
@@ -24,6 +25,15 @@ export const metadata: Metadata = {
     url: "https://agent.ergonomia.re",
     type: "website",
     locale: "fr_FR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agent IA sur-mesure — Ergonomia",
+    description:
+      "Un ergonome configure votre agent IA. Il comprend votre travail et agit dessus.",
+  },
+  alternates: {
+    canonical: "https://agent.ergonomia.re",
   },
 };
 
