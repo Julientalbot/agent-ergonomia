@@ -334,6 +334,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── CONCRÈTEMENT ─── */}
+      <section className="bg-dark py-24 md:py-32">
+        <div className="max-w-3xl mx-auto px-6">
+          <Reveal>
+            <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent-light mb-4">
+              Concrètement
+            </p>
+            <h2
+              className="font-serif font-medium leading-[1.15] tracking-tight text-card"
+              style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
+            >
+              Un lundi matin sans stress
+            </h2>
+          </Reveal>
+
+          <div className="mt-16 space-y-8">
+            {[
+              {
+                action: "Vous arrivez, votre agent a déjà relancé les 3 devis en attente.",
+                context: "Relances",
+              },
+              {
+                action: "Il a repéré un conflit dans votre agenda de jeudi et proposé un créneau de remplacement.",
+                context: "Agenda",
+              },
+              {
+                action: "Le compte-rendu de votre réunion d'hier est prêt, classé dans le bon dossier.",
+                context: "Documents",
+              },
+              {
+                action: "Un client vous a écrit à 7h12 — votre agent a préparé une réponse que vous validez en un clic.",
+                context: "Email",
+              },
+              {
+                action: "Il vous rappelle que la déclaration URSSAF est due vendredi.",
+                context: "Échéances",
+              },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div className="flex gap-6 items-start">
+                  <div className="shrink-0 w-12">
+                    <span className="font-mono text-accent-light text-xs">{item.context}</span>
+                  </div>
+                  <p className="text-dark-muted leading-relaxed text-lg">
+                    {item.action}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.5}>
+            <p className="mt-12 text-card leading-relaxed max-w-xl">
+              Pas de commande à donner. Pas de prompt à écrire.
+              <br />
+              <span className="text-accent-light">L'agent agit parce qu'il vous connaît.</span>
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ─── PRICING ─── */}
       <section className="py-24 md:py-32 bg-card">
         <div className="max-w-2xl mx-auto px-6">
