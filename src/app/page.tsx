@@ -1,28 +1,40 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
-/* ─── Reveal on scroll ─── */
+/* ─── CSS-only Scroll Reveal via IntersectionObserver ─── */
+function useReveal() {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: "-40px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+}
+
 function Reveal({
   children,
   className = "",
-  delay = 0,
 }: {
   children: React.ReactNode;
   className?: string;
-  delay?: number;
 }) {
+  const ref = useReveal();
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, delay, ease: [0.25, 1, 0.5, 1] }}
-      className={className}
-    >
+    <div ref={ref as React.RefObject<HTMLDivElement>} className={`reveal ${className}`}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -35,7 +47,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         onClick={() => setOpen(!open)}
         className="w-full flex justify-between items-center py-5 text-left cursor-pointer group"
       >
-        <span className="font-serif font-medium text-lg pr-6 group-hover:text-accent transition-colors">
+        <span className="font-serif font-medium text-lg pr-6 group-hover:text-accent transition-colors duration-200">
           {q}
         </span>
         <span
@@ -57,11 +69,40 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 /* ─── Step number ─── */
 function Step({ n }: { n: string }) {
   return (
-    <span className="font-mono text-xs tracking-widest text-accent uppercase">
+    <span className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
       {n}
     </span>
   );
 }
+
+/* ─── Sticky CTA (mobile) ─── */
+function StickyCTA() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShow(window.scrollY > 600);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div className={`sticky-cta ${show ? "show" : ""}`}>
+      <a
+        href="#booking"
+        className="block w-full text-center btn-accent text-base"
+      >
+        Réserver un appel découverte →
+      </a>
+    </div>
+  );
+}
+
+/* ─── Early Adopter — update when slots are taken ─── */
+const EARLY_ADOPTER_TOTAL = 10;
+const EARLY_ADOPTER_TAKEN = 0; // <-- update this number as clients sign
+const EARLY_ADOPTER_LEFT = EARLY_ADOPTER_TOTAL - EARLY_ADOPTER_TAKEN;
 
 /* ─── JSON-LD Structured Data ─── */
 const jsonLd = {
@@ -75,7 +116,7 @@ const jsonLd = {
       description:
         "Agent IA sur-mesure configuré par un ergonome. Comprend votre travail, agit dessus, et vous aide sans que vous ayez à demander.",
       url: "https://agent.ergonomia.re",
-      telephone: "+33692070740",
+      telephone: "+336****0740",
       image: "https://agent.ergonomia.re/opengraph-image",
       priceRange: "97€–197€/mois",
       address: {
@@ -188,7 +229,7 @@ export default function Home() {
       />
       <main>
       {/* ─── HERO ─── */}
-      <section className="pt-20 pb-24 md:pt-32 md:pb-40">
+      <section className="relative pt-24 pb-28 md:pt-36 md:pb-44 grain">
         <div className="max-w-2xl mx-auto px-6">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-8">
@@ -196,48 +237,43 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <Reveal>
             <h1
-              className="font-serif font-medium leading-[1.12] tracking-tight"
+              className="font-serif font-medium leading-[1.08] tracking-tight"
               style={{ fontSize: "clamp(1.75rem, 1rem + 3.2vw, 3.2rem)" }}
             >
               Votre agent IA dort dans un coin.
               <br />
               <span className="text-muted">
-                Normal&mdash; personne n&apos;a compris votre travail avant de le
+                Normal — personne n&apos;a compris votre travail avant de le
                 configurer.
               </span>
             </h1>
           </Reveal>
 
-          <Reveal delay={0.2}>
-            <p className="mt-8 text-lg text-muted leading-relaxed max-w-xl">
-              Je suis ergonome. Je comprends votre quotidien, je configure un
-              agent qui agit dessus, et il vous aide sans que vous ayez à
-              demander.
+          <Reveal>
+            <p className="mt-8 text-lg text-muted leading-relaxed max-w-xl" style={{ lineHeight: "1.7" }}>
+              Je suis ergonome. J&apos;observe votre travail, je configure votre agent, il agit à votre place.
             </p>
           </Reveal>
 
-          <Reveal delay={0.35}>
-            <a
-              href="#booking"
-              className="inline-block mt-10 px-7 py-3.5 text-sm font-medium tracking-wide rounded-md border border-accent text-accent hover:bg-accent hover:text-card transition-all duration-200"
-            >
-              Réserver un appel découverte &rarr;
+          <Reveal>
+            <a href="#booking" className="inline-block mt-10 btn-outline">
+              Réserver un appel découverte →
             </a>
           </Reveal>
         </div>
       </section>
 
       {/* ─── PROBLÈME (dark break) ─── */}
-      <section className="bg-dark py-24 md:py-32">
+      <section className="relative bg-dark py-28 md:py-36 grain">
         <div className="max-w-3xl mx-auto px-6">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent-light mb-4">
               Le problème
             </p>
             <h2
-              className="font-serif font-medium leading-[1.15] tracking-tight text-card"
+              className="font-serif font-medium leading-[1.12] tracking-tight text-card"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
               40 % des projets IA échouent.
@@ -246,25 +282,25 @@ export default function Home() {
             </h2>
           </Reveal>
 
-          <div className="mt-16 space-y-10">
+          <div className="mt-16 space-y-10 stagger-1">
             {[
               {
                 num: "01",
-                title: "La page blanche",
-                text: "Vous avez installé un outil IA. Mais vous ne savez pas quoi lui demander. Il prend la poussière.",
+                title: "L'abonnement qui prend la poussière",
+                text: "Vous payez 20 € par mois un outil IA que vous n'ouvrez plus. Vous savez qu'il pourrait servir. Vous ne savez pas à quoi.",
               },
               {
                 num: "02",
-                title: "Le parachutage",
-                text: "Un agent déposé dans votre quotidien sans comprendre votre métier. Il ne correspond à rien.",
+                title: "Le bot qui ne connaît pas votre métier",
+                text: "Vous lui demandez un truc simple. Il vous répond comme à un inconnu. Vous passez plus de temps à le corriger qu'à faire le travail vous-même.",
               },
               {
                 num: "03",
-                title: "Le prototype éternel",
-                text: "Ça a marché une fois pour une démo. Puis plus rien. Personne n'ajuste, personne ne suit.",
+                title: "La démo qui n'a jamais rien donné",
+                text: "Un consultant a installé quelque chose il y a six mois. Ça a marché une fois en réunion. Depuis, silence. Personne n'ose l'avouer.",
               },
             ].map((item, i) => (
-              <Reveal key={i} delay={i * 0.1}>
+              <Reveal key={i}>
                 <div className="flex gap-6">
                   <div className="shrink-0 w-12">
                     <span className="font-mono text-accent-light text-sm">{item.num}</span>
@@ -283,21 +319,21 @@ export default function Home() {
       </section>
 
       {/* ─── SOLUTION ─── */}
-      <section className="py-24 md:py-32">
+      <section className="relative py-28 md:py-36">
         <div className="max-w-3xl mx-auto px-6">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
               La méthode
             </p>
             <h2
-              className="font-serif font-medium leading-[1.15] tracking-tight"
+              className="font-serif font-medium leading-[1.12] tracking-tight"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
               Un ergonome configure votre agent
             </h2>
           </Reveal>
 
-          <div className="mt-16 space-y-0 divide-y divide-border">
+          <div className="mt-16 space-y-0 divide-y divide-border stagger-1">
             {[
               {
                 step: "Étape 01",
@@ -320,7 +356,7 @@ export default function Home() {
                 text: "Chaque mois, je revois, j'ajuste, j'optimise. L'agent s'améliore au fil de votre travail.",
               },
             ].map((item, i) => (
-              <Reveal key={i} delay={i * 0.08}>
+              <Reveal key={i}>
                 <div className="py-8 first:pt-0 last:pb-0">
                   <Step n={item.step} />
                   <h3 className="font-serif text-xl mt-2 mb-2">{item.title}</h3>
@@ -335,21 +371,21 @@ export default function Home() {
       </section>
 
       {/* ─── CONCRÈTEMENT ─── */}
-      <section className="bg-dark py-24 md:py-32">
+      <section className="relative bg-dark py-28 md:py-36 grain">
         <div className="max-w-3xl mx-auto px-6">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent-light mb-4">
               Concrètement
             </p>
             <h2
-              className="font-serif font-medium leading-[1.15] tracking-tight text-card"
+              className="font-serif font-medium leading-[1.12] tracking-tight text-card"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
               Un lundi matin sans stress
             </h2>
           </Reveal>
 
-          <div className="mt-16 space-y-8">
+          <div className="mt-16 space-y-8 stagger-1">
             {[
               {
                 action: "Vous arrivez, votre agent a déjà relancé les 3 devis en attente.",
@@ -372,12 +408,12 @@ export default function Home() {
                 context: "Échéances",
               },
             ].map((item, i) => (
-              <Reveal key={i} delay={i * 0.08}>
+              <Reveal key={i}>
                 <div className="flex gap-6 items-start">
-                  <div className="shrink-0 w-12">
-                    <span className="font-mono text-accent-light text-xs">{item.context}</span>
+                  <div className="shrink-0 w-16">
+                    <span className="font-mono text-accent-light text-xs tracking-wider">{item.context}</span>
                   </div>
-                  <p className="text-dark-muted leading-relaxed text-lg">
+                  <p className="text-dark-muted leading-relaxed text-lg" style={{ lineHeight: "1.7" }}>
                     {item.action}
                   </p>
                 </div>
@@ -385,49 +421,61 @@ export default function Home() {
             ))}
           </div>
 
-          <Reveal delay={0.5}>
-            <p className="mt-12 text-card leading-relaxed max-w-xl">
+          <Reveal>
+            <p className="mt-14 text-card leading-relaxed max-w-xl text-lg" style={{ lineHeight: "1.7" }}>
               Pas de commande à donner. Pas de prompt à écrire.
               <br />
-              <span className="text-accent-light">L'agent agit parce qu'il vous connaît.</span>
+              <span className="text-accent-light font-medium">L'agent agit parce qu'il vous connaît.</span>
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* ─── PRICING ─── */}
-      <section className="py-24 md:py-32 bg-card">
+      <section className="relative py-28 md:py-36 bg-card">
         <div className="max-w-2xl mx-auto px-6">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
               Tarifs
             </p>
             <h2
-              className="font-serif font-medium leading-[1.15] tracking-tight"
+              className="font-serif font-medium leading-[1.12] tracking-tight"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
               Early Adopter
             </h2>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="mt-10 p-8 md:p-10 rounded-xl border-2 border-accent bg-background">
-              <p className="text-muted text-sm mb-6">
-                10 premières places
-              </p>
+          <Reveal>
+            <div className="mt-10 p-8 md:p-10 rounded-lg border border-accent bg-background">
+              <div className="flex items-center gap-3 mb-6" aria-label={`${EARLY_ADOPTER_LEFT} places restantes sur ${EARLY_ADOPTER_TOTAL}`}>
+                <div className="flex gap-1.5">
+                  {Array.from({ length: EARLY_ADOPTER_TOTAL }).map((_, i) => (
+                    <span
+                      key={i}
+                      className={`h-2 w-5 rounded-sm ${
+                        i < EARLY_ADOPTER_TAKEN ? "bg-muted-lighter" : "bg-accent"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <p className="text-muted text-sm font-mono">
+                  <span className="text-accent font-medium">{EARLY_ADOPTER_LEFT}</span> / {EARLY_ADOPTER_TOTAL} places restantes
+                </p>
+              </div>
 
               <div className="flex items-baseline gap-3 mb-1">
                 <span className="text-5xl font-serif font-medium text-foreground">
-                  0&nbsp;&euro;
+                  0&nbsp;€
                 </span>
                 <span className="text-muted">
                   d&apos;installation{" "}
-                  <span className="line-through text-muted-lighter">497&nbsp;&euro;</span>
+                  <span className="line-through text-muted-lighter">497&nbsp;€</span>
                 </span>
               </div>
               <div className="flex items-baseline gap-2 mb-10">
                 <span className="text-4xl font-serif font-medium text-foreground">
-                  97&nbsp;&euro;
+                  97&nbsp;€
                 </span>
                 <span className="text-muted">/mois</span>
               </div>
@@ -446,37 +494,34 @@ export default function Home() {
                 ))}
               </ul>
 
-              <a
-                href="#booking"
-                className="inline-block px-7 py-3.5 text-sm font-medium tracking-wide rounded-md bg-accent text-card hover:bg-accent-hover transition-colors"
-              >
-                Prendre ma place &rarr;
+              <a href="#booking" className="btn-primary">
+                Prendre ma place →
               </a>
             </div>
           </Reveal>
 
-          <Reveal delay={0.2}>
+          <Reveal>
             <p className="mt-6 text-sm text-muted-light text-center">
-              Option on-site : +1&nbsp;500&nbsp;&euro; (Mac Mini dédié chez vous)
+              Option on-site : +1&nbsp;500&nbsp;€ (Mac Mini dédié chez vous)
             </p>
           </Reveal>
-          <Reveal delay={0.25}>
+          <Reveal>
             <p className="mt-2 text-xs text-muted-lighter text-center">
-              Tarif normal après les 10 premières places : 497&nbsp;&euro; installation + 197&nbsp;&euro;/mois
+              Tarif normal après les 10 premières places : 497&nbsp;€ installation + 197&nbsp;€/mois
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="py-24 md:py-32">
+      <section className="py-28 md:py-36">
         <div className="max-w-2xl mx-auto px-6">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
               Questions fréquentes
             </p>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal>
             <div className="mt-10">
               <FAQItem
                 q="C'est quoi exactement un agent IA ?"
@@ -504,44 +549,44 @@ export default function Home() {
       </section>
 
       {/* ─── BOOKING ─── */}
-      <section id="booking" className="py-24 md:py-32 bg-dark">
+      <section id="booking" className="relative bg-dark py-28 md:py-36 grain">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent-light mb-4">
               Sans engagement
             </p>
             <h2
-              className="font-serif font-medium leading-[1.15] tracking-tight text-card"
+              className="font-serif font-medium leading-[1.12] tracking-tight text-card"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
               Parlons de votre quotidien
             </h2>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <p className="mt-4 text-dark-muted text-lg">
+          <Reveal>
+            <p className="mt-4 text-dark-muted text-lg" style={{ lineHeight: "1.7" }}>
               30 minutes pour comprendre si un agent peut vous aider.
             </p>
           </Reveal>
 
-          <Reveal delay={0.2}>
+          <Reveal>
             <div className="mt-12">
               <a
                 href="https://cal.com/julien-talbot-ergonome/decouverte"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-4 bg-accent text-card font-medium rounded-md hover:bg-accent-hover transition-colors text-lg"
+                className="btn-accent"
               >
-                Parlez-moi de votre quotidien &rarr;
+                Parlez-moi de votre quotidien →
               </a>
               <p className="mt-4 text-sm text-dark-muted">
-                30 min &middot; Gratuit &middot; Sans engagement
+                30 min · Gratuit · Sans engagement
               </p>
             </div>
           </Reveal>
 
-          <Reveal delay={0.3}>
-            <p className="mt-12 text-sm text-dark-muted border-t border-dark-border pt-8 max-w-xs mx-auto">
+          <Reveal>
+            <p className="mt-14 text-sm text-dark-muted border-t border-dark-border pt-8 max-w-xs mx-auto" style={{ lineHeight: "1.7" }}>
               Julien Talbot
               <br />
               Ergonome, spécialiste IA et conditions de travail
@@ -554,19 +599,22 @@ export default function Home() {
 
       {/* ─── FOOTER ─── */}
       <footer className="py-10 border-t border-dark-border bg-dark">
-        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row md:justify-between md:items-center gap-3 text-sm text-dark-muted">
+        <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row md:justify-between md:items-center gap-3 text-sm text-dark-muted">
           <p>&copy; {new Date().getFullYear()} Ergonomia</p>
           <a
             href="https://www.linkedin.com/in/julien-talbot-ergonome/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent-light hover:text-accent transition-colors"
+            className="text-accent-light hover:text-accent transition-colors duration-200"
           >
             LinkedIn
           </a>
         </div>
       </footer>
     </main>
+
+    {/* ─── Sticky CTA (mobile only) ─── */}
+    <StickyCTA />
     </>
   );
 }
