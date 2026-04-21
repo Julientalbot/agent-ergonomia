@@ -234,8 +234,7 @@ export default function Home() {
           <Reveal>
             <div className="flex flex-col items-center">
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-card-alt border-2 border-accent/20 flex items-center justify-center overflow-hidden shadow-sm mb-6">
-                {/* Remplacer par <img src="/julien-portrait.jpg" className="w-full h-full object-cover" alt="Julien Talbot" /> */}
-                <span className="font-serif text-2xl text-accent">JT</span>
+                <img src="/julien-portrait.jpg" className="w-full h-full object-cover" alt="Julien Talbot" />
               </div>
               <p className="text-sm text-muted font-medium mb-1">Julien Talbot — Ergonome, La Réunion</p>
             </div>
@@ -582,8 +581,7 @@ export default function Home() {
         <div className="max-w-2xl mx-auto px-6 text-center">
           <Reveal>
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-black border-2 border-accent/30 flex items-center justify-center overflow-hidden mx-auto mb-6">
-              {/* Remplacer par <img src="/julien-portrait.jpg" className="w-full h-full object-cover" alt="Julien Talbot" /> */}
-              <span className="font-serif text-2xl text-accent-light">JT</span>
+              <img src="/julien-portrait.jpg" className="w-full h-full object-cover" alt="Julien Talbot" />
             </div>
             <p className="text-sm text-dark-muted font-medium mb-8">
               Julien Talbot — Ergonome IA, La Réunion
