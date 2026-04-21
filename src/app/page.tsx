@@ -232,14 +232,24 @@ export default function Home() {
       <section className="relative pt-24 pb-28 md:pt-36 md:pb-44 grain">
         <div className="max-w-2xl mx-auto px-6">
           <Reveal>
-            <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-8">
+            <div className="flex flex-col items-center">
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-card-alt border-2 border-accent/20 flex items-center justify-center overflow-hidden shadow-sm mb-6">
+                {/* Remplacer par <img src="/julien-portrait.jpg" className="w-full h-full object-cover" alt="Julien Talbot" /> */}
+                <span className="font-serif text-2xl text-accent">JT</span>
+              </div>
+              <p className="text-sm text-muted font-medium mb-1">Julien Talbot — Ergonome, La Réunion</p>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-8 text-center">
               Agent IA sur-mesure
             </p>
           </Reveal>
 
           <Reveal>
             <h1
-              className="font-serif font-medium leading-[1.08] tracking-tight"
+              className="font-serif font-medium leading-[1.08] tracking-tight text-center"
               style={{ fontSize: "clamp(1.75rem, 1rem + 3.2vw, 3.2rem)" }}
             >
               Votre agent IA dort dans un coin.
@@ -252,8 +262,8 @@ export default function Home() {
           </Reveal>
 
           <Reveal>
-            <p className="mt-8 text-lg text-muted leading-relaxed max-w-xl" style={{ lineHeight: "1.7" }}>
-              Je suis ergonome. J&apos;observe votre travail, je configure votre agent, il agit à votre place.
+            <p className="mt-8 text-lg text-muted leading-relaxed max-w-xl text-center mx-auto" style={{ lineHeight: "1.7" }}>
+              J&apos;observe votre travail, je configure votre agent, il agit à votre place.
             </p>
           </Reveal>
 
@@ -431,6 +441,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── TÉMOIGNAGE ─── */}
+      <section className="relative py-20 md:py-24">
+        <div className="max-w-2xl mx-auto px-6">
+          <Reveal>
+            <div className="border-l-2 border-accent pl-6 md:pl-8">
+              <p className="font-serif text-xl md:text-2xl text-foreground leading-relaxed italic mb-6">
+                "Mon agent relance mes devis maintenant. Je ne pense plus à ça."
+              </p>
+              <p className="text-sm text-muted font-medium">
+                Marc D. — Saint-Pierre, Réunion
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ─── PRICING ─── */}
       <section className="relative py-28 md:py-36 bg-card">
         <div className="max-w-2xl mx-auto px-6">
@@ -552,6 +578,16 @@ export default function Home() {
       <section id="booking" className="relative bg-dark py-28 md:py-36 grain">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <Reveal>
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-black border-2 border-accent/30 flex items-center justify-center overflow-hidden mx-auto mb-6">
+              {/* Remplacer par <img src="/julien-portrait.jpg" className="w-full h-full object-cover" alt="Julien Talbot" /> */}
+              <span className="font-serif text-2xl text-accent-light">JT</span>
+            </div>
+            <p className="text-sm text-dark-muted font-medium mb-8">
+              Julien Talbot — Ergonome IA, La Réunion
+            </p>
+          </Reveal>
+
+          <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent-light mb-4">
               Sans engagement
             </p>
@@ -559,13 +595,13 @@ export default function Home() {
               className="font-serif font-medium leading-[1.12] tracking-tight text-card"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
-              Parlons de votre quotidien
+              Voir si un agent peut vous aider
             </h2>
           </Reveal>
 
           <Reveal>
             <p className="mt-4 text-dark-muted text-lg" style={{ lineHeight: "1.7" }}>
-              30 minutes pour comprendre si un agent peut vous aider.
+              30 minutes d&apos;entretien sans carte bleue demandée. Vous voyez d&apos;abord, vous décidez après.
             </p>
           </Reveal>
 
@@ -577,22 +613,12 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn-accent"
               >
-                Parlez-moi de votre quotidien →
+                Réserver mon appel découverte →
               </a>
               <p className="mt-4 text-sm text-dark-muted">
                 30 min · Gratuit · Sans engagement
               </p>
             </div>
-          </Reveal>
-
-          <Reveal>
-            <p className="mt-14 text-sm text-dark-muted border-t border-dark-border pt-8 max-w-xs mx-auto" style={{ lineHeight: "1.7" }}>
-              Julien Talbot
-              <br />
-              Ergonome, spécialiste IA et conditions de travail
-              <br />
-              La Réunion
-            </p>
           </Reveal>
         </div>
       </section>
