@@ -354,18 +354,8 @@ export default function Home() {
               },
               {
                 step: "Étape 02",
-                title: "Configuration",
-                text: "Je configure un agent qui comprend VOTRE contexte. Pas un bot générique — un agent qui sait qui vous êtes.",
-              },
-              {
-                step: "Étape 03",
-                title: "Proactivité",
-                text: "Votre agent n'attend pas que vous demandiez. Il rappelle, suggère, agit — à partir de ce que j'ai compris de vous.",
-              },
-              {
-                step: "Étape 04",
-                title: "Ajustement continu",
-                text: "Chaque mois, je revois, j'ajuste, j'optimise. L'agent s'améliore au fil de votre travail.",
+                title: "Configuration & proactivité",
+                text: "Je configure un agent qui comprend VOTRE contexte. Il rappelle, suggère, agit — et s'améliore chaque mois sans que vous ayez à demander.",
               },
             ].map((item, i) => (
               <Reveal key={i}>
@@ -439,22 +429,6 @@ export default function Home() {
               <br />
               <span className="text-accent-light font-medium">L'agent agit parce qu'il vous connaît.</span>
             </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── TÉMOIGNAGE ─── */}
-      <section className="relative py-20 md:py-24">
-        <div className="max-w-2xl mx-auto px-6">
-          <Reveal>
-            <div className="text-center">
-              <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted-light mb-4">
-                Retours clients
-              </p>
-              <p className="text-muted italic">
-                Premiers témoignages en collecte — à paraître prochainement.
-              </p>
-            </div>
           </Reveal>
         </div>
       </section>
@@ -626,16 +600,30 @@ export default function Home() {
 
       {/* ─── FOOTER ─── */}
       <footer className="py-10 border-t border-dark-border bg-dark">
-        <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row md:justify-between md:items-center gap-3 text-sm text-dark-muted">
-          <p>&copy; {new Date().getFullYear()} Ergonomia</p>
-          <a
-            href="https://www.linkedin.com/in/julien-talbot-ergonome/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent-light hover:text-accent transition-colors duration-200"
-          >
-            LinkedIn
-          </a>
+        <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4 text-sm text-dark-muted">
+          <div className="flex flex-col gap-1">
+            <p>&copy; {new Date().getFullYear()} Ergonomia — Julien Talbot</p>
+            <a
+              href="mailto:julien.talbot@ergonomia.re"
+              className="text-accent-light hover:text-accent transition-colors duration-200"
+            >
+              julien.talbot@ergonomia.re
+            </a>
+          </div>
+          <div className="flex gap-4 items-center">
+            <a
+              href="https://www.linkedin.com/in/julien-talbot-ergonome/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-light hover:text-accent transition-colors duration-200"
+            >
+              LinkedIn
+            </a>
+            <span className="text-dark-border">·</span>
+            <a href="/mentions-legales" className="text-dark-muted hover:text-accent transition-colors duration-200">
+              Mentions légales
+            </a>
+          </div>
         </div>
       </footer>
     </main>
