@@ -268,9 +268,12 @@ export default function Home() {
           </Reveal>
 
           <Reveal>
-            <a href="#booking" className="inline-block mt-10 btn-outline">
-              Réserver un appel découverte →
-            </a>
+            <div className="text-center">
+              <a href="#booking" className="inline-block mt-10 btn-outline">
+                Réserver un appel découverte →
+              </a>
+              <p className="mt-3 text-sm text-muted-light">Sans engagement</p>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -445,12 +448,12 @@ export default function Home() {
       <section className="relative py-20 md:py-24">
         <div className="max-w-2xl mx-auto px-6">
           <Reveal>
-            <div className="border-l-2 border-accent pl-6 md:pl-8">
-              <p className="font-serif text-xl md:text-2xl text-foreground leading-relaxed italic mb-6">
-                "Mon agent relance mes devis maintenant. Je ne pense plus à ça."
+            <div className="text-center">
+              <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted-light mb-4">
+                Retours clients
               </p>
-              <p className="text-sm text-muted font-medium">
-                Marc D. — Saint-Pierre, Réunion
+              <p className="text-muted italic">
+                Premiers témoignages en collecte — à paraître prochainement.
               </p>
             </div>
           </Reveal>
