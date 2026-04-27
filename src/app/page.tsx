@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable react/no-unescaped-entities, @next/next/no-img-element */
+
 import { useState, useEffect, useRef } from "react";
 
 /* ─── CSS-only Scroll Reveal via IntersectionObserver ─── */
@@ -227,7 +229,22 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main>
+      <header className="site-header">
+        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+          <a href="#top" className="font-mono text-xs tracking-[0.18em] uppercase text-foreground">
+            Ergonomia · Agent IA
+          </a>
+          <nav className="hidden md:flex items-center gap-6 text-sm text-muted">
+            <a href="#methode" className="hover:text-accent transition-colors">Méthode</a>
+            <a href="#agent" className="hover:text-accent transition-colors">Agent</a>
+            <a href="#securite" className="hover:text-accent transition-colors">Sécurité</a>
+            <a href="#tarifs" className="hover:text-accent transition-colors">Tarifs</a>
+          </nav>
+          <a href="#booking" className="hidden sm:inline-block btn-outline !py-2 !px-4">Appel découverte →</a>
+        </div>
+      </header>
+
+      <main id="top">
       {/* ─── HERO ─── */}
       <section className="relative pt-24 pb-28 md:pt-36 md:pb-44 grain">
         <div className="max-w-2xl mx-auto px-6">
@@ -262,16 +279,24 @@ export default function Home() {
 
           <Reveal>
             <p className="mt-8 text-lg text-muted leading-relaxed max-w-xl text-center mx-auto" style={{ lineHeight: "1.7" }}>
-              J&apos;observe votre travail, je configure votre agent, il agit à votre place.
+              J&apos;observe votre travail réel, je construis son cadre d&apos;action, puis votre agent exécute les bonnes routines sans attendre vos prompts.
             </p>
           </Reveal>
 
           <Reveal>
+            <div className="mt-8 flex flex-wrap justify-center gap-2 text-xs font-mono uppercase tracking-[0.12em] text-muted">
+              <span className="trust-pill">Hébergé en Europe</span>
+              <span className="trust-pill">Actions traçables</span>
+              <span className="trust-pill">Vous validez ce qui compte</span>
+            </div>
+          </Reveal>
+
+          <Reveal>
             <div className="text-center">
-              <a href="#booking" className="inline-block mt-10 btn-outline">
-                Réserver un appel découverte →
+              <a href="#booking" className="inline-block mt-10 btn-primary">
+                Voir si un agent peut aider →
               </a>
-              <p className="mt-3 text-sm text-muted-light">Sans engagement</p>
+              <p className="mt-3 text-sm text-muted-light">30 min · Gratuit · Sans carte bancaire</p>
             </div>
           </Reveal>
         </div>
@@ -331,7 +356,7 @@ export default function Home() {
       </section>
 
       {/* ─── SOLUTION ─── */}
-      <section className="relative py-28 md:py-36">
+      <section id="methode" className="relative py-28 md:py-36">
         <div className="max-w-3xl mx-auto px-6">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
@@ -372,6 +397,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── AGENT MATERIALISÉ ─── */}
+      <section id="agent" className="relative py-28 md:py-36 bg-card border-y border-border">
+        <div className="max-w-4xl mx-auto px-6">
+          <Reveal>
+            <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
+              L'agent, concrètement
+            </p>
+            <h2
+              className="font-serif font-medium leading-[1.12] tracking-tight"
+              style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
+            >
+              Pas un employé IA générique.
+              <br />
+              <span className="text-muted">Un cadre d'action construit depuis votre activité.</span>
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid md:grid-cols-2 gap-4 stagger-1">
+            {[
+              ["Email", "Il repère les messages qui demandent une action et prépare une réponse dans votre ton."],
+              ["Agenda", "Il détecte les conflits, les oublis, les créneaux à proposer et les échéances proches."],
+              ["Mémoire", "Il garde le contexte utile : clients, dossiers, routines, préférences, points de vigilance."],
+              ["Documents", "Il prépare, classe et retrouve les comptes-rendus, devis ou pièces de suivi."],
+              ["Routines", "Il relance, surveille, synthétise et vous signale ce qui mérite votre décision."],
+              ["Limites", "Les actions sensibles restent validées par vous. L'autonomie n'efface pas la responsabilité."],
+            ].map(([title, text], i) => (
+              <Reveal key={i}>
+                <div className="capability-card">
+                  <p className="font-mono text-xs tracking-[0.16em] uppercase text-accent mb-3">{title}</p>
+                  <p className="text-muted leading-relaxed">{text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <p className="mt-12 text-lg text-muted leading-relaxed max-w-2xl">
+              Le but n'est pas d'avoir “plus de compétences”. Le but est d'obtenir les bonnes actions, au bon moment, dans votre contexte réel.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ─── CONCRÈTEMENT ─── */}
       <section className="relative bg-dark py-28 md:py-36 grain">
         <div className="max-w-3xl mx-auto px-6">
@@ -387,54 +455,81 @@ export default function Home() {
             </h2>
           </Reveal>
 
-          <div className="mt-16 space-y-8 stagger-1">
-            {[
-              {
-                action: "Vous arrivez, votre agent a déjà relancé les 3 devis en attente.",
-                context: "Relances",
-              },
-              {
-                action: "Il a repéré un conflit dans votre agenda de jeudi et proposé un créneau de remplacement.",
-                context: "Agenda",
-              },
-              {
-                action: "Le compte-rendu de votre réunion d'hier est prêt, classé dans le bon dossier.",
-                context: "Documents",
-              },
-              {
-                action: "Un client vous a écrit à 7h12 — votre agent a préparé une réponse que vous validez en un clic.",
-                context: "Email",
-              },
-              {
-                action: "Il vous rappelle que la déclaration URSSAF est due vendredi.",
-                context: "Échéances",
-              },
-            ].map((item, i) => (
-              <Reveal key={i}>
-                <div className="flex gap-6 items-start">
-                  <div className="shrink-0 w-16">
-                    <span className="font-mono text-accent-light text-xs tracking-wider">{item.context}</span>
+          <Reveal>
+            <div className="mt-14 action-log" aria-label="Exemple de journal d'actions de l'agent">
+              {[
+                ["08:03", "3 devis en attente détectés", "relances préparées"],
+                ["08:12", "conflit agenda jeudi repéré", "créneau de remplacement proposé"],
+                ["08:21", "réunion d'hier retrouvée", "compte-rendu classé dans le bon dossier"],
+                ["08:27", "mail client reçu à 7h12", "réponse prête à valider"],
+                ["08:31", "échéance URSSAF vendredi", "rappel ajouté à votre matinée"],
+              ].map(([time, event, result], i) => (
+                <div key={i} className="action-row">
+                  <span className="font-mono text-xs text-accent-light">{time}</span>
+                  <div>
+                    <p className="text-card">{event}</p>
+                    <p className="text-dark-muted text-sm mt-1">{result}</p>
                   </div>
-                  <p className="text-dark-muted leading-relaxed text-lg" style={{ lineHeight: "1.7" }}>
-                    {item.action}
-                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <p className="mt-14 text-card leading-relaxed max-w-xl text-lg" style={{ lineHeight: "1.7" }}>
+              Pas de commande à donner. Pas de prompt à écrire.
+              <br />
+              <span className="text-accent-light font-medium">L'agent agit parce que son cadre de travail a été construit avec vous.</span>
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── SÉCURITÉ ─── */}
+      <section id="securite" className="relative py-28 md:py-36">
+        <div className="max-w-4xl mx-auto px-6">
+          <Reveal>
+            <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
+              Sécurité et contrôle
+            </p>
+            <h2
+              className="font-serif font-medium leading-[1.12] tracking-tight"
+              style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
+            >
+              L'agent agit.
+              <br />
+              <span className="text-muted">Vous gardez la prise.</span>
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid md:grid-cols-3 gap-4 stagger-1">
+            {[
+              ["Europe", "Hébergement européen, accès limités aux outils nécessaires, données séparées de celles des autres clients."],
+              ["Validation", "Les actions sensibles peuvent rester en brouillon : vous décidez ce qui part, ce qui attend, ce qui s'arrête."],
+              ["Traçabilité", "L'agent laisse une trace de ce qu'il a fait, quand, et pourquoi. Une erreur doit rester récupérable."],
+            ].map(([title, text], i) => (
+              <Reveal key={i}>
+                <div className="control-card">
+                  <p className="font-mono text-xs tracking-[0.16em] uppercase text-accent mb-3">{title}</p>
+                  <p className="text-muted leading-relaxed">{text}</p>
                 </div>
               </Reveal>
             ))}
           </div>
 
           <Reveal>
-            <p className="mt-14 text-card leading-relaxed max-w-xl text-lg" style={{ lineHeight: "1.7" }}>
-              Pas de commande à donner. Pas de prompt à écrire.
-              <br />
-              <span className="text-accent-light font-medium">L'agent agit parce qu'il vous connaît.</span>
-            </p>
+            <div className="mt-10 rounded-lg border border-accent/30 bg-accent-subtle p-6">
+              <p className="font-serif text-xl mb-2">Option souveraine</p>
+              <p className="text-muted leading-relaxed">
+                Pour les situations sensibles : installation sur Mac Mini dédié chez vous. Plus cher, mais maximale maîtrise de l'environnement.
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
 
       {/* ─── PRICING ─── */}
-      <section className="relative py-28 md:py-36 bg-card">
+      <section id="tarifs" className="relative py-28 md:py-36 bg-card">
         <div className="max-w-2xl mx-auto px-6">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
@@ -484,10 +579,11 @@ export default function Home() {
 
               <ul className="space-y-3 mb-10 text-muted">
                 {[
-                  "Entretien de compréhension de votre activité",
-                  "Agent IA personnalisé et proactif",
+                  "Entretien de compréhension de votre activité réelle",
+                  "Agent IA personnel connecté à vos routines",
+                  "Cadre de validation pour les actions sensibles",
+                  "Hébergement européen inclus",
                   "Support et ajustement continu",
-                  "Hébergement inclus",
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 items-start">
                     <span className="text-accent mt-1.5 shrink-0 text-[8px]">■</span>
@@ -527,23 +623,31 @@ export default function Home() {
             <div className="mt-10">
               <FAQItem
                 q="C'est quoi exactement un agent IA ?"
-                a="Un assistant IA personnel, connecté à vos outils (email, calendrier, etc.), qui agit de manière proactive à partir d'une compréhension fine de votre travail."
+                a="Un agent IA personnel connecté à vos outils, avec une mémoire de votre activité et des routines définies avec vous : relancer, préparer, surveiller, classer, alerter."
               />
               <FAQItem
                 q="En quoi c'est différent de ChatGPT ?"
-                a="ChatGPT attend que vous posiez une question. Mon agent connaît votre travail et agit de lui-même."
+                a="ChatGPT attend une question. Votre agent surveille un contexte, applique des règles de travail et prépare ou exécute des actions sans repartir de zéro à chaque fois."
+              />
+              <FAQItem
+                q="Est-ce que c'est un employé IA ?"
+                a="Non. Un employé décide et porte une responsabilité. Votre agent exécute des routines, prépare des décisions et agit dans un cadre construit avec vous."
+              />
+              <FAQItem
+                q="Qui est responsable si l'agent se trompe ?"
+                a="Les actions sensibles doivent rester validables. Le dispositif est conçu pour garder une trace, rendre l'erreur visible et permettre une récupération rapide."
               />
               <FAQItem
                 q="Combien de temps avant que ce soit utile ?"
-                a="Dès la première semaine. L'entretien d'intégration identifie des gains rapides immédiatement."
+                a="Dès la première semaine : l'entretien sert à identifier les irritants simples, puis l'agent est ajusté chaque mois sur votre activité réelle."
               />
               <FAQItem
                 q="Mes données sont-elles en sécurité ?"
-                a="Votre agent tourne sur un serveur européen, conforme RGPD. Vos données restent les vôtres."
+                a="L'agent tourne sur un environnement européen, avec des accès limités aux outils nécessaires. Vos données restent les vôtres et les accès peuvent être retirés."
               />
               <FAQItem
-                q="Je peux annuler quand je veux ?"
-                a="Oui, sans engagement après le premier mois."
+                q="Pourquoi payer tous les mois ?"
+                a="Parce que le travail change. Le prix couvre l'hébergement, la maintenance, les ajustements et l'amélioration continue des routines de votre agent."
               />
             </div>
           </Reveal>
@@ -570,13 +674,13 @@ export default function Home() {
               className="font-serif font-medium leading-[1.12] tracking-tight text-card"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
-              Voir si un agent peut vous aider
+              Voir si un agent peut aider
             </h2>
           </Reveal>
 
           <Reveal>
             <p className="mt-4 text-dark-muted text-lg" style={{ lineHeight: "1.7" }}>
-              30 minutes d&apos;entretien sans carte bleue demandée. Vous voyez d&apos;abord, vous décidez après.
+              30 minutes pour décrire votre activité, repérer 2 ou 3 routines utiles, et décider si un agent vaut le coup.
             </p>
           </Reveal>
 
