@@ -528,6 +528,56 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── ROUTEUR ─── */}
+      <section className="relative py-24 md:py-32 bg-card border-y border-border">
+        <div className="max-w-4xl mx-auto px-6">
+          <Reveal>
+            <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
+              Quelle entrée choisir ?
+            </p>
+            <h2
+              className="font-serif font-medium leading-[1.12] tracking-tight"
+              style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
+            >
+              Un agent est utile quand le travail à déléguer est assez compris.
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 grid md:grid-cols-3 gap-4 stagger-1">
+            {[
+              {
+                title: "Vous préparez un déploiement IA dans une équipe",
+                text: "Commencez par observer ce que l’IA va déplacer : vérification, qualité, responsabilités, coopération.",
+                cta: "Audit IA du travail réel →",
+                href: "https://www.ergonomia.re/service-ergonomique/audit-ia-travail-reel",
+              },
+              {
+                title: "Vous avez une routine précise à déléguer",
+                text: "Relancer, classer, surveiller, préparer, alerter : l’agent peut être configuré sur un cadre d’action clair.",
+                cta: "Rester sur l’agent →",
+                href: "#tarifs",
+              },
+              {
+                title: "Vous n’êtes pas sûr du bon point d’entrée",
+                text: "Un appel de cadrage suffit souvent à distinguer audit, agent ou simple règle d’usage.",
+                cta: "Appel de cadrage →",
+                href: "#booking",
+              },
+            ].map((item, i) => (
+              <Reveal key={i}>
+                <div className="capability-card flex flex-col">
+                  <h3 className="font-serif text-xl mb-3">{item.title}</h3>
+                  <p className="text-muted leading-relaxed flex-1">{item.text}</p>
+                  <a href={item.href} className="mt-6 text-sm font-medium text-accent hover:text-accent-hover transition-colors">
+                    {item.cta}
+                  </a>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── PRICING ─── */}
       <section id="tarifs" className="relative py-28 md:py-36 bg-card">
         <div className="max-w-2xl mx-auto px-6">
