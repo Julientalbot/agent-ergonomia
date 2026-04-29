@@ -106,6 +106,9 @@ const EARLY_ADOPTER_TOTAL = 10;
 const EARLY_ADOPTER_TAKEN = 0; // <-- update this number as clients sign
 const EARLY_ADOPTER_LEFT = EARLY_ADOPTER_TOTAL - EARLY_ADOPTER_TAKEN;
 
+const AUDIT_PRE_AGENT_CAL_URL =
+  "https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=agent_site&utm_medium=router_card&utm_campaign=audit_pre_agent_v0";
+
 /* ─── JSON-LD Structured Data ─── */
 const jsonLd = {
   "@context": "https://schema.org",
@@ -548,8 +551,8 @@ export default function Home() {
               {
                 title: "Vous préparez un déploiement IA dans une équipe",
                 text: "Commencez par observer ce que l’IA va déplacer : vérification, qualité, responsabilités, coopération.",
-                cta: "Audit IA du travail réel →",
-                href: "https://www.ergonomia.re/service-ergonomique/audit-ia-travail-reel",
+                cta: "Vérifier votre premier cas IA →",
+                href: AUDIT_PRE_AGENT_CAL_URL,
               },
               {
                 title: "Vous avez une routine précise à déléguer",
