@@ -106,8 +106,8 @@ const EARLY_ADOPTER_TOTAL = 10;
 const EARLY_ADOPTER_TAKEN = 0; // <-- update this number as clients sign
 const EARLY_ADOPTER_LEFT = EARLY_ADOPTER_TOTAL - EARLY_ADOPTER_TAKEN;
 
-const AUDIT_PRE_AGENT_CAL_URL =
-  "https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=agent_site&utm_medium=router_card&utm_campaign=audit_pre_agent_v0";
+const AUDIT_IA_TRAVAIL_REEL_CAL_URL =
+  "https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=agent_site&utm_medium=router_card&utm_campaign=audit_ia_travail_reel_v0";
 
 /* ─── JSON-LD Structured Data ─── */
 const jsonLd = {
@@ -117,9 +117,9 @@ const jsonLd = {
       "@type": "LocalBusiness",
       "@id": "https://agent.ergonomia.re/#business",
       name: "Ergonomia",
-      alternateName: "Agent IA sur-mesure — Ergonomia",
+      alternateName: "Agent IA sur-mesure — brique avancée Ergonomia",
       description:
-        "Agent IA sur-mesure configuré par un ergonome. Comprend votre travail, agit dessus, et vous aide sans que vous ayez à demander.",
+        "Brique avancée pour organisations dont le travail réel est déjà assez compris : agent IA configuré par un ergonome, avec cadre d’action, validation et traçabilité.",
       url: "https://agent.ergonomia.re",
       telephone: "+336****0740",
       image: "https://agent.ergonomia.re/opengraph-image",
@@ -172,7 +172,7 @@ const jsonLd = {
         "@type": "Place",
         name: "La Réunion (974)",
       },
-      serviceType: "Agent IA sur-mesure",
+      serviceType: "Agent IA sur-mesure — brique avancée",
       offers: [
         {
           "@type": "Offer",
@@ -235,7 +235,7 @@ export default function Home() {
       <header className="site-header">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
           <a href="#top" className="font-mono text-xs tracking-[0.18em] uppercase text-foreground">
-            Ergonomia · Agent IA
+            Ergonomia · IA dans le travail réel
           </a>
           <nav className="hidden md:flex items-center gap-6 text-sm text-muted">
             <a href="#methode" className="hover:text-accent transition-colors">Méthode</a>
@@ -262,7 +262,7 @@ export default function Home() {
 
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-8 text-center">
-              Agent IA sur-mesure
+              Brique avancée IA
             </p>
           </Reveal>
 
@@ -271,18 +271,17 @@ export default function Home() {
               className="font-serif font-medium leading-[1.08] tracking-tight text-center"
               style={{ fontSize: "clamp(1.75rem, 1rem + 3.2vw, 3.2rem)" }}
             >
-              Votre agent IA dort dans un coin.
+              Quand le travail est compris,
               <br />
               <span className="text-muted">
-                Normal — personne n&apos;a compris votre travail avant de le
-                configurer.
+                l&apos;agent peut enfin servir l&apos;activité réelle.
               </span>
             </h1>
           </Reveal>
 
           <Reveal>
             <p className="mt-8 text-lg text-muted leading-relaxed max-w-xl text-center mx-auto" style={{ lineHeight: "1.7" }}>
-              J&apos;observe votre travail réel, je construis son cadre d&apos;action, puis votre agent exécute les bonnes routines sans attendre vos prompts.
+              Après ChatGPT, Copilot ou un chatbot, certaines routines peuvent devenir agentiques. Pas toutes. Cette page concerne les cas où le travail est déjà assez clair pour déléguer une action.
             </p>
           </Reveal>
 
@@ -297,7 +296,7 @@ export default function Home() {
           <Reveal>
             <div className="text-center">
               <a href="#booking" className="inline-block mt-10 btn-primary">
-                Voir si un agent peut aider →
+                Vérifier si l’agent est le bon niveau →
               </a>
               <p className="mt-3 text-sm text-muted-light">30 min · Gratuit · Sans carte bancaire</p>
             </div>
@@ -369,7 +368,7 @@ export default function Home() {
               className="font-serif font-medium leading-[1.12] tracking-tight"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
-              Un ergonome configure votre agent
+              Un agent seulement après compréhension du travail
             </h2>
           </Reveal>
 
@@ -378,12 +377,12 @@ export default function Home() {
               {
                 step: "Étape 01",
                 title: "Entretien",
-                text: "J'analyse votre travail réel : tâches, outils, irritants, ce que vous oubliez. Pas un questionnaire — un vrai dialogue.",
+                text: "J'analyse votre travail réel : tâches, outils, irritants, exceptions, validations et limites. Si le cas est trop flou, on revient à l’audit IA du travail réel.",
               },
               {
                 step: "Étape 02",
                 title: "Configuration & proactivité",
-                text: "Je configure un agent qui comprend VOTRE contexte. Il rappelle, suggère, agit — et s'améliore chaque mois sans que vous ayez à demander.",
+                text: "Je configure seulement les routines qui ont un cadre clair : rappel, préparation, classement, surveillance, brouillon, alerte. Les actions sensibles restent validables.",
               },
             ].map((item, i) => (
               <Reveal key={i}>
@@ -405,7 +404,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6">
           <Reveal>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
-              L'agent, concrètement
+              Brique agent, concrètement
             </p>
             <h2
               className="font-serif font-medium leading-[1.12] tracking-tight"
@@ -454,7 +453,7 @@ export default function Home() {
               className="font-serif font-medium leading-[1.12] tracking-tight text-card"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
-              Un lundi matin sans stress
+              Ce que l’agent peut faire quand le cadre est clair
             </h2>
           </Reveal>
 
@@ -480,9 +479,9 @@ export default function Home() {
 
           <Reveal>
             <p className="mt-14 text-card leading-relaxed max-w-xl text-lg" style={{ lineHeight: "1.7" }}>
-              Pas de commande à donner. Pas de prompt à écrire.
+              Pas de magie. Pas de promesse générale.
               <br />
-              <span className="text-accent-light font-medium">L'agent agit parce que son cadre de travail a été construit avec vous.</span>
+              <span className="text-accent-light font-medium">L'agent agit seulement là où le travail, les limites et la validation ont été cadrés.</span>
             </p>
           </Reveal>
         </div>
@@ -499,7 +498,7 @@ export default function Home() {
               className="font-serif font-medium leading-[1.12] tracking-tight"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
-              L'agent agit.
+              L'agent agit dans un cadre.
               <br />
               <span className="text-muted">Vous gardez la prise.</span>
             </h2>
@@ -542,27 +541,27 @@ export default function Home() {
               className="font-serif font-medium leading-[1.12] tracking-tight"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
-              Un agent est utile quand le travail à déléguer est assez compris.
+              L’agent est l’étape avancée. L’audit vient avant si le cas est flou.
             </h2>
           </Reveal>
 
           <div className="mt-12 grid md:grid-cols-3 gap-4 stagger-1">
             {[
               {
-                title: "Vous préparez un déploiement IA dans une équipe",
+                title: "Vous préparez un usage IA dans une équipe",
                 text: "Commencez par observer ce que l’IA va déplacer : vérification, qualité, responsabilités, coopération.",
                 cta: "Vérifier votre premier cas IA →",
-                href: AUDIT_PRE_AGENT_CAL_URL,
+                href: AUDIT_IA_TRAVAIL_REEL_CAL_URL,
               },
               {
                 title: "Vous avez une routine précise à déléguer",
-                text: "Relancer, classer, surveiller, préparer, alerter : l’agent peut être configuré sur un cadre d’action clair.",
+                text: "Relancer, classer, surveiller, préparer, alerter : l’agent devient utile quand le cadre d’action est déjà clair.",
                 cta: "Rester sur l’agent →",
                 href: "#tarifs",
               },
               {
                 title: "Vous n’êtes pas sûr du bon point d’entrée",
-                text: "Un appel de cadrage suffit souvent à distinguer audit, agent ou simple règle d’usage.",
+                text: "Un appel de cadrage suffit souvent à distinguer audit IA du travail réel, agent, automatisation ou simple règle d’usage.",
                 cta: "Appel de cadrage →",
                 href: "#booking",
               },
@@ -632,8 +631,8 @@ export default function Home() {
 
               <ul className="space-y-3 mb-10 text-muted">
                 {[
-                  "Entretien de compréhension de votre activité réelle",
-                  "Agent IA personnel connecté à vos routines",
+                  "Vérification du cas d’usage dans votre activité réelle",
+                  "Agent IA personnel limité aux routines cadrées",
                   "Cadre de validation pour les actions sensibles",
                   "Hébergement européen inclus",
                   "Support et ajustement continu",
@@ -676,11 +675,11 @@ export default function Home() {
             <div className="mt-10">
               <FAQItem
                 q="C'est quoi exactement un agent IA ?"
-                a="Un agent IA personnel connecté à vos outils, avec une mémoire de votre activité et des routines définies avec vous : relancer, préparer, surveiller, classer, alerter."
+                a="Une brique avancée connectée à vos outils, avec une mémoire de votre activité et des routines définies avec vous : relancer, préparer, surveiller, classer, alerter. Elle n’est utile que si le travail à déléguer est assez compris."
               />
               <FAQItem
-                q="En quoi c'est différent de ChatGPT ?"
-                a="ChatGPT attend une question. Votre agent surveille un contexte, applique des règles de travail et prépare ou exécute des actions sans repartir de zéro à chaque fois."
+                q="En quoi c'est différent de ChatGPT ou Copilot ?"
+                a="ChatGPT ou Copilot répondent surtout à une demande. L’agent surveille un contexte, applique des règles de travail et prépare ou exécute des actions dans un périmètre défini. C’est un niveau plus avancé, pas le point de départ obligatoire."
               />
               <FAQItem
                 q="Est-ce que c'est un employé IA ?"
@@ -692,7 +691,7 @@ export default function Home() {
               />
               <FAQItem
                 q="Combien de temps avant que ce soit utile ?"
-                a="Dès la première semaine : l'entretien sert à identifier les irritants simples, puis l'agent est ajusté chaque mois sur votre activité réelle."
+                a="Dès la première semaine si la routine est claire. Si le cas d’usage est flou, il faut d’abord passer par un cadrage ou un Audit IA du travail réel."
               />
               <FAQItem
                 q="Mes données sont-elles en sécurité ?"
@@ -715,7 +714,7 @@ export default function Home() {
               <img src="/julien-portrait.jpg" className="w-full h-full object-cover" alt="Julien Talbot" />
             </div>
             <p className="text-sm text-dark-muted font-medium mb-8">
-              Julien Talbot — Ergonome IA, La Réunion
+              Julien Talbot — Ergonome de l’activité, IA dans le travail réel
             </p>
           </Reveal>
 
@@ -727,13 +726,13 @@ export default function Home() {
               className="font-serif font-medium leading-[1.12] tracking-tight text-card"
               style={{ fontSize: "clamp(1.5rem, 0.8rem + 2.5vw, 2.4rem)" }}
             >
-              Voir si un agent peut aider
+              Vérifier si l’agent est le bon niveau
             </h2>
           </Reveal>
 
           <Reveal>
             <p className="mt-4 text-dark-muted text-lg" style={{ lineHeight: "1.7" }}>
-              30 minutes pour décrire votre activité, repérer 2 ou 3 routines utiles, et décider si un agent vaut le coup.
+              30 minutes pour décrire votre activité, distinguer audit, automatisation ou agent, et éviter de construire une brique IA trop tôt.
             </p>
           </Reveal>
 

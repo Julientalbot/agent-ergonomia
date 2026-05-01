@@ -4,7 +4,8 @@
 
 nom public provisoire : **vérifier votre premier cas IA**.
 
-nom interne : audit pré-agent.
+nom public : Audit IA du travail réel.
+nom interne avancé : audit pré-agent.
 
 tunnel testé :
 
@@ -41,11 +42,11 @@ si Julien nomme le problème comme **choisir le bon premier cas IA depuis le tra
 
 **Vérifier votre premier cas IA**
 
-Avant de créer un agent IA, vous vérifiez où il a vraiment du sens.
+Avant de déployer de l’IA, vous vérifiez où elle a vraiment du sens dans le travail réel.
 La mission observe un processus court, le travail réel associé, et les risques de surcharge ou de mauvais usage.
 Vous obtenez un tri simple : automatiser, assister, garder humain.
 Vous repartez avec un score d’opportunité et une recommandation : avancer, recadrer, ou ne pas lancer.
-L’objectif : éviter un agent gadget qui ajoute du travail au lieu d’en retirer.
+L’objectif : éviter une IA gadget qui ajoute du travail au lieu d’en retirer.
 
 ## phrase orale
 
@@ -63,12 +64,12 @@ bouton site :
 
 fin de post :
 
-> si vous préparez un agent IA dans une équipe, le premier sujet n’est pas l’outil.
+> si vous préparez un usage IA dans une équipe, le premier sujet n’est pas l’outil.
 >
 > c’est le travail qu’il va déplacer.
 >
 > 30 minutes pour vérifier si votre premier cas IA tient debout dans le travail réel :
-> https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=post&utm_campaign=audit_pre_agent_v0
+> https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=post&utm_campaign=audit_ia_travail_reel_v0
 
 ## Cal.com v0
 
@@ -87,7 +88,7 @@ introduction :
 
 questions obligatoires :
 
-1. Quel travail voulez-vous mieux comprendre avant de déployer un agent IA ?
+1. Quel travail voulez-vous mieux comprendre avant de déployer de l’IA ?
 2. Aujourd’hui, qu’est-ce qui coince le plus dans ce travail ?
 3. Sur quel exemple réel pourrions-nous nous appuyer pendant l’appel ?
 
@@ -142,4 +143,4 @@ après 10 posts ou 14 jours :
 - site principal agent : `agent.ergonomia.re`
 - Cal.com API : accès rétabli avec nouvelle clé ; nécessite User-Agent navigateur sinon erreur 1010.
 - événement Cal.com dédié créé et patché : `premier-cas-ia`.
-- site agent modifié localement : carte routeur “audit” pointe vers Cal.com dédié avec `utm_campaign=audit_pre_agent_v0`.
+- site agent modifié localement : carte routeur “audit” pointe vers Cal.com dédié avec `utm_campaign=audit_ia_travail_reel_v0`.

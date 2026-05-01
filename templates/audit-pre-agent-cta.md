@@ -2,22 +2,22 @@
 
 ## décision
 
-ne pas utiliser “cadrer un audit pré-agent” côté prospect.
+ne pas utiliser “cadrer un audit pré-agent” côté prospect. le nom public est “Audit IA du travail réel”.
 
 raison : c’est notre vocabulaire interne. le prospect veut savoir si son premier cas IA tient debout, pas acheter un intitulé de mission.
 
 ## lien unique post
 
-https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=post&utm_campaign=audit_pre_agent_v0
+https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=post&utm_campaign=audit_ia_travail_reel_v0
 
 ## CTA fin de post
 
-si vous préparez un agent IA dans une équipe, le premier sujet n’est pas l’outil.
+si vous préparez un usage IA dans une équipe, le premier sujet n’est pas l’outil.
 
 c’est le travail qu’il va déplacer.
 
 30 minutes pour vérifier si votre premier cas IA tient debout dans le travail réel :
-https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=post&utm_campaign=audit_pre_agent_v0
+https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=post&utm_campaign=audit_ia_travail_reel_v0
 
 ## CTA commentaire
 
@@ -26,14 +26,14 @@ j’ai ouvert quelques créneaux pour les organisations qui veulent déployer de
 30 minutes.
 travail réel, risques, premier terrain possible.
 
-lien : https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=comment&utm_campaign=audit_pre_agent_v0
+lien : https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=comment&utm_campaign=audit_ia_travail_reel_v0
 
 ## réponse DM courte
 
 oui. le bon point de départ n’est pas “quel agent construire ?”, mais “quel travail va être déplacé ?”.
 
 si vous voulez, on peut prendre 30 minutes pour vérifier si votre premier cas IA tient debout dans le travail réel :
-https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=dm&utm_campaign=audit_pre_agent_v0
+https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=dm&utm_campaign=audit_ia_travail_reel_v0
 
 ## phrase orale
 
