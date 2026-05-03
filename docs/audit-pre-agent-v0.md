@@ -11,9 +11,10 @@ tunnel testé :
 
 `post linkedin → CTA direct → Cal.com dédié → appel → proposition → score`
 
-lien unique v0 :
+liens Cal.com v0 :
 
-`https://cal.com/julien-talbot-ergonome/premier-cas-ia`
+- entreprises FR : `https://cal.com/julien-talbot-ergonome/premier-cas-ia`
+- labs EN : `https://cal.com/julien-talbot-ergonome/ai-agents-real-work`
 
 ## exigences conservées
 
@@ -38,23 +39,45 @@ lien unique v0 :
 
 si Julien nomme le problème comme **choisir le bon premier cas IA depuis le travail réel**, alors les prospects qualifiés réservent un appel avec un cas concret à examiner.
 
-## offre v0
+## offre v1
 
-**Vérifier votre premier cas IA**
+**Audit IA du travail réel**
 
-Avant de déployer de l’IA, vous vérifiez où elle a vraiment du sens dans le travail réel.
-La mission observe un processus court, le travail réel associé, et les risques de surcharge ou de mauvais usage.
-Vous obtenez un tri simple : automatiser, assister, garder humain.
-Vous repartez avec un score d’opportunité et une recommandation : avancer, recadrer, ou ne pas lancer.
-L’objectif : éviter une IA gadget qui ajoute du travail au lieu d’en retirer.
+Avant de déployer de l’IA ou un agent IA, vous identifiez ce que cela va vraiment transformer dans l’activité : tâches, arbitrages, responsabilités, charge de vérification, supervision et reprise en main.
+
+L’audit part d’une situation de travail réelle, pas d’une promesse technologique.
+
+Nous regardons :
+
+- ce que les personnes font réellement ;
+- ce qu’elles corrigent sans le formaliser ;
+- ce qu’elles arbitrent ;
+- ce qu’elles vérifient ;
+- ce qui pourrait être assisté ou automatisé ;
+- ce qui doit rester humain ;
+- ce qui doit rester supervisable ;
+- ce qu’un agent IA devrait rendre visible ;
+- où l’humain doit pouvoir interrompre ou reprendre.
+
+Vous repartez avec :
+
+- une cartographie activité / IA ;
+- une lecture des risques de charge invisible ;
+- une priorisation des cas d’usage ;
+- une recommandation : automatiser, assister, cadrer, ou ne pas lancer ;
+- des règles d’usage ;
+- des scénarios de supervision ;
+- des points de vérification et de reprise humaine.
+
+L’objectif : éviter une IA gadget qui ajoute du travail, ou un agent performant mais ingouvernable dans le travail réel.
 
 ## phrase orale
 
-> Je vous aide à choisir un premier cas d’usage IA qui part du travail réel, pas d’une envie d’outil.
+> Je vous aide à vérifier ce que votre premier usage IA va vraiment transformer dans le travail réel : tâches, responsabilités, vérification, supervision et reprise en main.
 
 version plus directe :
 
-> Vous avez une idée d’agent IA. Je vous aide à savoir rapidement si elle tient debout dans le travail réel.
+> Vous avez une idée d’agent IA. Je vous aide à savoir rapidement si elle tient debout dans le travail réel et si l’humain pourra encore comprendre, vérifier et reprendre.
 
 ## CTA v0
 
@@ -64,17 +87,18 @@ bouton site :
 
 fin de post :
 
-> si vous préparez un usage IA dans une équipe, le premier sujet n’est pas l’outil.
+> si vous préparez un usage IA ou un agent IA dans une équipe, le premier sujet n’est pas l’outil.
 >
-> c’est le travail qu’il va déplacer.
+> c’est le travail qu’il va déplacer : vérification, qualité, responsabilités, supervision et reprise en main.
 >
 > 30 minutes pour vérifier si votre premier cas IA tient debout dans le travail réel :
 > https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=post&utm_campaign=audit_ia_travail_reel_v0
 
 ## Cal.com v0
 
-événement créé :
+### événement entreprises FR
 
+- id : `5531081`
 - titre : `Vérifier votre premier cas IA`
 - slug : `premier-cas-ia`
 - durée : 30 min
@@ -82,15 +106,29 @@ fin de post :
 - Google Meet
 - invités désactivés
 
-introduction :
+### événement labs EN
 
-> Pour que l’appel soit utile, ces trois questions aident à comprendre le travail réel que vous envisagez de transformer avec l’IA. Répondez simplement avec ce que vous savez déjà : trois minutes suffisent.
+- id : `5571666`
+- titre : `Make your AI / agents work in real companies`
+- slug : `ai-agents-real-work`
+- durée : 30 min
+- lien : `https://cal.com/julien-talbot-ergonome/ai-agents-real-work`
+- Google Meet
+- invités désactivés
 
-questions obligatoires :
+introduction FR :
 
-1. Quel travail voulez-vous mieux comprendre avant de déployer de l’IA ?
-2. Aujourd’hui, qu’est-ce qui coince le plus dans ce travail ?
-3. Sur quel exemple réel pourrions-nous nous appuyer pendant l’appel ?
+> Réservez 30 minutes pour vérifier si votre cas IA tient dans le travail réel : activité concernée, supervision, vérification et reprise en main.
+
+questions supprimées : Cal.com ne sert pas à faire le diagnostic avant l’appel.
+
+champ optionnel FR :
+
+- Si vous voulez, décrivez en une phrase le cas IA que vous voulez examiner.
+
+champ optionnel EN :
+
+- Optional: what AI product, agent or workflow do you want to discuss?
 
 ## scoring qualification appel
 

@@ -1,12 +1,15 @@
-# CTA — vérifier votre premier cas IA
+# CTA — deux entrées Cal.com
 
 ## décision
 
-ne pas utiliser “cadrer un audit pré-agent” côté prospect. le nom public est “Audit IA du travail réel”.
+Simplicité absolue : deux liens Cal.com, pas de nouvelle landing.
 
-raison : c’est notre vocabulaire interne. le prospect veut savoir si son premier cas IA tient debout, pas acheter un intitulé de mission.
+- LinkedIn FR / entreprises : `Vérifier votre premier cas IA`.
+- X EN / labs : `Make your AI / agents work in real companies`.
 
-## lien unique post
+Le contenu fait le pré-cadrage. Cal.com qualifie. L’appel valide.
+
+## lien LinkedIn FR / entreprises
 
 https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=post&utm_campaign=audit_ia_travail_reel_v0
 
@@ -35,10 +38,32 @@ oui. le bon point de départ n’est pas “quel agent construire ?”, mais “
 si vous voulez, on peut prendre 30 minutes pour vérifier si votre premier cas IA tient debout dans le travail réel :
 https://cal.com/julien-talbot-ergonome/premier-cas-ia?utm_source=linkedin&utm_medium=dm&utm_campaign=audit_ia_travail_reel_v0
 
-## phrase orale
+## phrase orale FR
 
-vous avez une idée d’agent IA. je vous aide à savoir rapidement si elle tient debout dans le travail réel.
+vous avez une idée d’IA. je vous aide à vérifier rapidement si elle tient debout dans le travail réel.
 
 ## variante plus ergo
 
 je vous aide à choisir un premier cas d’usage IA qui part du travail réel, pas d’une envie d’outil.
+
+## lien X EN / labs
+
+https://cal.com/julien-talbot-ergonome/ai-agents-real-work?utm_source=x&utm_medium=profile&utm_campaign=agent_real_work_v0
+
+## CTA X EN
+
+Building AI agents for real companies?
+
+I can review where supervision, validation, interruption and recovery will break:
+https://cal.com/julien-talbot-ergonome/ai-agents-real-work?utm_source=x&utm_medium=post&utm_campaign=agent_real_work_v0
+
+## DM X EN
+
+Hi [Name],
+
+Your point connects with what I work on: how AI agents fit into real company work, beyond demos.
+
+I look specifically at supervision, traceability, human validation, interruption and recovery points.
+
+If useful, I can review one workflow / agent use case with you here:
+https://cal.com/julien-talbot-ergonome/ai-agents-real-work?utm_source=x&utm_medium=dm&utm_campaign=agent_real_work_v0
