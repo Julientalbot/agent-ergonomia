@@ -33,7 +33,7 @@ export default function MentionsLegales() {
         <section className="mb-10 space-y-4">
           <h2 className="font-serif text-xl mb-4">Propriété intellectuelle</h2>
           <p className="text-muted leading-relaxed">
-            L'ensemble des contenus (textes, images, code, marque Ergonomia) est la propriété
+            L&apos;ensemble des contenus (textes, images, code, marque Ergonomia) est la propriété
             exclusive de Julien Talbot. Toute reproduction sans autorisation est interdite.
           </p>
         </section>
@@ -41,13 +41,13 @@ export default function MentionsLegales() {
         <section className="mb-10 space-y-4">
           <h2 className="font-serif text-xl mb-4">Politique de confidentialité</h2>
           <p className="text-muted leading-relaxed">
-            Les données collectées via le site (nom, email, entreprise lors d'un appel découverte)
+            Les données collectées via le site (nom, email, entreprise lors d&apos;un appel découverte)
             sont utilisées uniquement dans le cadre de la relation commerciale. Elles ne sont
             jamais revendues ni transmises à des tiers.
           </p>
           <p className="text-muted leading-relaxed">
-            Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de
-            suppression de vos données. Pour l'exercer, contactez
+            Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification et de
+            suppression de vos données. Pour l&apos;exercer, contactez
             <a href="mailto:julien.talbot@ergonomia.re" className="text-accent hover:underline">
               julien.talbot@ergonomia.re
             </a>.
@@ -57,16 +57,16 @@ export default function MentionsLegales() {
         <section className="mb-10 space-y-4">
           <h2 className="font-serif text-xl mb-4">Cookies</h2>
           <p className="text-muted leading-relaxed">
-            Le site utilise <strong>Plausible Analytics</strong>, un outil de mesure d'audience
+            Le site utilise <strong>Plausible Analytics</strong>, un outil de mesure d&apos;audience
             respectueux de la vie privée, qui ne pose aucun cookie et ne collecte aucune donnée
-            personnelle identifiable. Aucun bandeau de consentement n'est donc nécessaire.
+            personnelle identifiable. Aucun bandeau de consentement n&apos;est donc nécessaire.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="font-serif text-xl mb-4">Conditions de service</h2>
           <p className="text-muted leading-relaxed">
-            Le service d'agent IA sur-mesure est proposé sous forme d'abonnement mensuel,
+            Le service d&apos;agent IA sur-mesure est proposé sous forme d&apos;abonnement mensuel,
             sans engagement de durée minimum après le premier mois. Les conditions générales
             de vente sont communiquées sur demande.
           </p>

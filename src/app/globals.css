@@ -57,7 +57,7 @@
   --color-dark: var(--dark);
   --color-dark-muted: var(--dark-muted);
   --color-dark-border: var(--dark-border);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-geist);
   --font-serif: var(--font-lora);
   --font-mono: var(--font-jetbrains-mono);
 }
@@ -67,7 +67,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-geist), system-ui, sans-serif;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -320,9 +320,145 @@ button:focus-visible {
   border-bottom: 0;
 }
 
+/* ─── Redesign pass — concrete agent proof and pricing clarity ─── */
+
+.section-kicker {
+  margin-bottom: 1rem;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.hero-side {
+  border: 1px solid var(--border);
+  border-radius: 1.75rem;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--accent-subtle) 78%, transparent), transparent 42%),
+    color-mix(in srgb, var(--card) 92%, white);
+  box-shadow: 0 28px 80px -55px rgba(26, 26, 26, 0.55);
+}
+
+.proof-panel,
+.agent-operating-card {
+  overflow: hidden;
+  border: 1px solid var(--dark-border);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015)),
+    var(--dark);
+  box-shadow: 0 24px 70px -45px rgba(0, 0, 0, 0.65);
+}
+
+.proof-row {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.status-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: var(--accent-light);
+  box-shadow: 0 0 0 6px rgba(208, 137, 106, 0.13);
+}
+
+.quiet-card {
+  border-left: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--card) 76%, transparent);
+  padding: 1rem 1.1rem;
+}
+
+.validation-flow {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  background: var(--card);
+  padding: 1rem;
+}
+
+.validation-step {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--background);
+  padding: 1rem;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.hero-grid > *,
+.price-grid > * {
+  min-width: 0;
+}
+
+.price-card,
+.price-explainer,
+.faq-panel {
+  height: 100%;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  background: var(--background);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.price-card {
+  border-color: var(--accent);
+  box-shadow: 0 24px 70px -55px rgba(196, 112, 78, 0.9);
+}
+
+.included-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.included-list li {
+  list-style: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.included-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .price-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 640px) {
-  .action-row {
+  .action-row,
+  .proof-row {
     grid-template-columns: 1fr;
     gap: 0.35rem;
+  }
+
+  .hero-side {
+    padding: 0.75rem;
+    border-radius: 1.25rem;
   }
 }

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Lora, JetBrains_Mono } from "next/font/google";
+import { Geist, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
 });
 
@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${inter.variable} ${lora.variable} ${jetbrainsMono.variable} antialiased`}>
+    <html lang="fr" className={`${geist.variable} ${lora.variable} ${jetbrainsMono.variable} antialiased`}>
       <head>
         <script
           defer
