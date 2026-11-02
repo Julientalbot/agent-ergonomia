@@ -634,7 +634,7 @@ export default function Home() {
 
           <Reveal>
             <div className="mt-10 rounded-2xl border border-accent/30 bg-accent-subtle p-6 md:p-8">
-              <p className="font-serif text-xl mb-2">Option souveraine</p>
+              <p className="font-serif text-xl mb-2">Option installée chez vous</p>
               <p className="text-muted leading-relaxed">
                 Pour les situations sensibles : installation sur Mac Mini dédié chez vous. Plus cher, mais maximale maîtrise de l'environnement.
               </p>
